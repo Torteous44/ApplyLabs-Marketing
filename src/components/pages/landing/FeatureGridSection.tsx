@@ -1,9 +1,9 @@
 "use client";
-import React, { useState } from "react";
+import React from "react";
 import { ArrowUpRight } from "lucide-react";
 import { useTranslation } from "@/hooks/useTranslation";
 import { TranslationKey } from "@/lib/translations";
-import { Modal } from "@/components/ui";
+import { useModal } from "@/lib/modal-context";
 
 const features: {
 	titleKey: TranslationKey;
@@ -28,7 +28,7 @@ const features: {
 
 export default function FeatureGridSection() {
 	const t = useTranslation();
-	const [isModalOpen, setIsModalOpen] = useState(false);
+	const { openModal } = useModal();
 	return (
 		<section className="w-full bg-[#F3F3F3] py-16 md:py-24">
 			<div className="max-w-7xl mx-auto px-4 md:px-8">
@@ -78,7 +78,7 @@ export default function FeatureGridSection() {
 							</div>
 							<div className="flex-1 flex justify-center">
 								<button
-									onClick={() => setIsModalOpen(true)}
+									onClick={openModal}
 									className="px-5 py-2 rounded-full bg-white text-gray-900 text-sm font-medium hover:bg-gray-200 transition cursor-pointer"
 								>
 									{t("signUp")}
@@ -88,9 +88,6 @@ export default function FeatureGridSection() {
 					</div>
 				</div>
 			</div>
-
-			{/* Modal */}
-			<Modal isOpen={isModalOpen} onClose={() => setIsModalOpen(false)} />
 		</section>
 	);
 }
