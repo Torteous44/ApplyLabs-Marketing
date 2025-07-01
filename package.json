@@ -4,22 +4,74 @@
   "private": true,
   "scripts": {
     "dev": "next dev --turbopack",
-    "build": "next build",
+    "build": "npm run build:tokens && next build",
+    "build:tokens": "tsx scripts/build-tokens.ts",
     "start": "next start",
-    "lint": "next lint"
+    "lint": "next lint",
+    "lint:fix": "next lint --fix",
+    "format": "biome format --write .",
+    "storybook": "storybook dev -p 6006",
+    "build-storybook": "storybook build",
+    "test": "vitest",
+    "test:watch": "vitest --watch",
+    "prepare": "husky install"
   },
   "dependencies": {
+    "@motionone/react": "^10.16.4",
+    "lucide-react": "^0.525.0",
+    "markdown-to-jsx": "^7.7.10",
+    "motion": "^12.20.5",
+    "next": "15.3.4",
     "react": "^19.0.0",
     "react-dom": "^19.0.0",
-    "next": "15.3.4"
+    "react-markdown": "^10.1.0"
   },
   "devDependencies": {
-    "typescript": "^5",
+    "@biomejs/biome": "^2.0.6",
+    "@chromatic-com/storybook": "^4.0.1",
+    "@eslint/eslintrc": "^3",
+    "@radix-ui/react-slot": "^1.2.3",
+    "@storybook/addon-a11y": "^9.0.14",
+    "@storybook/addon-docs": "^9.0.14",
+    "@storybook/addon-vitest": "^9.0.14",
+    "@storybook/nextjs-vite": "^9.0.14",
+    "@tailwindcss/postcss": "^4.1.11",
+    "@tailwindcss/typography": "^0.5.16",
+    "@testing-library/jest-dom": "^6.6.3",
+    "@testing-library/react": "^16.3.0",
+    "@testing-library/user-event": "^14.6.1",
     "@types/node": "^20",
     "@types/react": "^19",
     "@types/react-dom": "^19",
+    "@vitejs/plugin-react": "^4.6.0",
+    "@vitest/browser": "3.2.4",
+    "@vitest/coverage-v8": "3.2.4",
+    "autoprefixer": "^10.4.21",
+    "class-variance-authority": "^0.7.1",
+    "clsx": "^2.1.1",
     "eslint": "^9",
     "eslint-config-next": "15.3.4",
-    "@eslint/eslintrc": "^3"
+    "eslint-plugin-storybook": "^9.0.14",
+    "husky": "^9.1.7",
+    "jsdom": "^26.1.0",
+    "lint-staged": "^16.1.2",
+    "playwright": "^1.53.1",
+    "postcss": "^8.5.6",
+    "storybook": "^9.0.14",
+    "tailwind-merge": "^3.3.1",
+    "tailwindcss": "^4.1.11",
+    "tsx": "^4.20.3",
+    "typescript": "^5",
+    "vitest": "^3.2.4"
+  },
+  "lint-staged": {
+    "*.{js,jsx,ts,tsx}": [
+      "eslint --fix",
+      "biome format --write",
+      "vitest run --passWithNoTests"
+    ],
+    "*.{json,css,md}": [
+      "biome format --write"
+    ]
   }
 }

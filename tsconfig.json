@@ -1,7 +1,7 @@
 {
   "compilerOptions": {
     "target": "ES2017",
-    "lib": ["dom", "dom.iterable", "esnext"],
+    "lib": ["dom", "dom.iterable", "es6"],
     "allowJs": true,
     "skipLibCheck": true,
     "strict": true,
@@ -19,6 +19,18 @@
       }
     ],
     "paths": {
+      "@/components/*": ["./src/components/*"],
+      "@/components/ui/*": ["./src/components/ui/*"],
+      "@/components/ui": ["./src/components/ui/index"],
+      "@/components/layout/*": ["./src/components/layout/*"],
+      "@/components/layout": ["./src/components/layout/index"],
+      "@/components/composed/*": ["./src/components/composed/*"],
+      "@/components/pages/*": ["./src/components/pages/*"],
+      "@/tokens/*": ["./src/tokens/*"],
+      "@/lib/*": ["./src/lib/*"],
+      "@/hooks/*": ["./src/hooks/*"],
+      "@/icons/*": ["./src/icons/*"],
+      "@/styles/*": ["./src/styles/*"],
       "@/*": ["./src/*"]
     }
   },
